@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: get build artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v7
         with:
           # specifu artifacts identifier other wise do not know which same name we use as ther
           # this download and unzip this artifact
