@@ -1,6 +1,6 @@
-import MainContent from './components/MainContent';
-import logo from './assets/images/logo.png';
-
+import MainContent from "./components/MainContent";
+import logo from "./assets/images/logo.png";
+//  added comment
 function App() {
   return (
     <>
