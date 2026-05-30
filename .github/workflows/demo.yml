@@ -29,12 +29,22 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: dist-files
-          path: | #multiple files can be added like this
-            dist
-            package.json
+          path: dist
+          # path: | #multiple files can be added like this
+          #   dist
+          #   package.json
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: get build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          # specifu artifacts identifier other wise do not know which same name we use as ther
+          # this download and unzip this artifact
+          name: dist-files
+      - name: output content
+        run: ls
+
       - name: Deploy
         run: echo "Deploying..."
