@@ -9,6 +9,12 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
+      - name: chache depedencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          # hashFiles() finds unique has value based on file path we have
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }} #used for retriving cache hin future
       - name: Install dependencies
         run: npm ci
       - name: Lint code
@@ -21,6 +27,12 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
+      - name: chache depedencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          # hashFiles() finds unique has value based on file path we have
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }} #used for retriving cache hin future
       - name: Install dependencies
         run: npm ci
       - name: Build website
@@ -38,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: get build artifacts
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v5
         with:
           # specifu artifacts identifier other wise do not know which same name we use as ther
           # this download and unzip this artifact
